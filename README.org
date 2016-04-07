@@ -38,8 +38,8 @@ and TODOs.
      TODO-tracking activities.
   7. The app should make it easy to switch a note to a TODO entry, and
      vice versa.
-  8. The web app's UI should be accessible at https://localhost:3000,
-     while its API should be at https://localhost:3000/api.
+  8. The web app's UI should be accessible at [[https://localhost:3000]],
+     while its API should be at [[https://localhost:3000/api]].
 
 * Notes
 
