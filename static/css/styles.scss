@@ -21,7 +21,7 @@ body {
     background-color: $bg-color;
     color: $fg-color;
     padding-top: $base-unit;
-    font-family: 'CentumaSansLight';
+    // font-family: 'CentumaSansLight';
 }
 
 input {
@@ -31,13 +31,13 @@ input {
 }
 
 .btn,
-.nav-tabs.nav-justified > li > a {
+.nav-tabs > li > a {
     -webkit-border-radius: 0;
             border-radius: 0;
 }
 
 .nav-tabs > li > a {
-    font-size: 2em;
+    font-size: 1.5em;
     padding: $base-unit / 2;
 }
 
@@ -50,6 +50,8 @@ input {
 
 .large-input {
     width: 100%;
-    padding: $base-unit / 2;
-    font-size: 2em;
+    padding: $base-unit / 4;
+    font-size: 1.5em;
+    margin-bottom: $base-unit / 4;
+    border: 1px solid $grey-light;
 }

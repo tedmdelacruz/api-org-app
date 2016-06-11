@@ -10,19 +10,18 @@
 body {
   background-color: #fff;
   color: #26343f;
-  padding-top: 40px;
-  font-family: 'CentumaSansLight'; }
+  padding-top: 40px; }
 
 input:focus {
   outline: none; }
 
 .btn,
-.nav-tabs.nav-justified > li > a {
+.nav-tabs > li > a {
   -webkit-border-radius: 0;
   border-radius: 0; }
 
 .nav-tabs > li > a {
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 20px; }
 
 .tab-content {
@@ -33,5 +32,7 @@ input:focus {
 
 .large-input {
   width: 100%;
-  padding: 20px;
-  font-size: 2em; }
+  padding: 10px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  border: 1px solid #dddddd; }

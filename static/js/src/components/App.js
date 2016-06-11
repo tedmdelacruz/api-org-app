@@ -4,6 +4,7 @@ import { Notes, Todo } from './'
 export class App extends Component {
 
     handleTabClick(event) {
+        event.preventDefault()
         this.props.selectTab(event.target.dataset.value)
     }
 
@@ -20,12 +21,16 @@ export class App extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <ul className="nav nav-tabs nav-justified">
+                        <ul className="nav nav-tabs">
                             <li className={ this.active('notes') }>
-                                <a href="#" onClick={ this.handleTabClick.bind(this) } data-value="notes">Notes</a>
+                                <a href="#" onClick={ this.handleTabClick.bind(this) } data-value="notes">
+                                    <i className="fa fa-sticky-note" aria-hidden="true"></i> Notes
+                                </a>
                             </li>
                             <li className={ this.active('todo') }>
-                                <a href="#" onClick={ this.handleTabClick.bind(this) } data-value="todo">Todo</a>
+                                <a href="#" onClick={ this.handleTabClick.bind(this) } data-value="todo">
+                                    <i className="fa fa-check-square-o" aria-hidden="true"></i> Todo
+                                </a>
                             </li>
                         </ul>
                     </div>
