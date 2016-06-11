@@ -1,0 +1,55 @@
+@import "bootstrap.min.css";
+@import "font-awesome.min.css";
+@import "font";
+
+$base-unit: 40px;
+
+$white: #fff;
+$grey: #444;
+$grey-light: lighten($grey, 60%);
+$grey-blue: #26343f;
+$midnight-blue: #1a242d;
+
+$primary-color: $white;
+
+$bg-color: $primary-color;
+$fg-color: $grey-blue;
+$accent-color: #00b299;
+$secondary-accent-color: #f2784b;
+
+body {
+    background-color: $bg-color;
+    color: $fg-color;
+    padding-top: $base-unit;
+    font-family: 'CentumaSansLight';
+}
+
+input {
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn,
+.nav-tabs.nav-justified > li > a {
+    -webkit-border-radius: 0;
+            border-radius: 0;
+}
+
+.nav-tabs > li > a {
+    font-size: 2em;
+    padding: $base-unit / 2;
+}
+
+.tab-content {
+    padding: $base-unit;
+    border-width: 0 1px 1px 1px;
+    border-color: $grey-light;
+    border-style: solid;
+}
+
+.large-input {
+    width: 100%;
+    padding: $base-unit / 2;
+    font-size: 2em;
+}

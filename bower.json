@@ -1,0 +1,23 @@
+{
+  "name": "api-org-app",
+  "description": "A simple notes and TODO app",
+  "main": "index.js",
+  "authors": [
+    "Ted Mathew dela Cruz <tedmathewdelacruz@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tedmdelacruz/api-org-app",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "fontawesome#^4.6.3"
+  }
+}
