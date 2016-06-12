@@ -1,17 +1,23 @@
-import { CREATE_NOTE } from '../actions/index'
+import { CREATE_NOTE, FINISH_GET_NOTES } from '../actions/index'
 
 const init = {
     form: {
         title: '',
         text: ''
     },
-    entries: []
+    notes: []
 }
 
 export default function app(state = init, action) {
     switch(action.type) {
-        case CREATE_NOTE:
-            return Object.assign({}, state, { form })
+        case FINISH_GET_NOTES:
+            return Object.assign({}, state, {
+                form: {
+                    title: '',
+                    text: ''
+                },
+                notes: action.notes
+            })
         default:
             return state
     }

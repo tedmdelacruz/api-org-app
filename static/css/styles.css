@@ -10,7 +10,8 @@
 body {
   background-color: #fff;
   color: #26343f;
-  padding-top: 40px; }
+  padding-top: 40px;
+  font-family: 'CentumaSansLight'; }
 
 input:focus {
   outline: none; }
@@ -19,6 +20,7 @@ textarea {
   resize: vertical; }
 
 .btn,
+.panel,
 .nav-tabs > li > a {
   -webkit-border-radius: 0;
   border-radius: 0; }
@@ -39,3 +41,6 @@ textarea {
   font-size: 1.5em;
   margin-bottom: 10px;
   border: 1px solid #dddddd; }
+
+.note-form {
+  margin-bottom: 40px; }

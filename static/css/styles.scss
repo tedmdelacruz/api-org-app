@@ -21,7 +21,7 @@ body {
     background-color: $bg-color;
     color: $fg-color;
     padding-top: $base-unit;
-    // font-family: 'CentumaSansLight';
+    font-family: 'CentumaSansLight';
 }
 
 input {
@@ -35,6 +35,7 @@ textarea {
 }
 
 .btn,
+.panel,
 .nav-tabs > li > a {
     -webkit-border-radius: 0;
             border-radius: 0;
@@ -58,4 +59,8 @@ textarea {
     font-size: 1.5em;
     margin-bottom: $base-unit / 4;
     border: 1px solid $grey-light;
+}
+
+.note-form {
+    margin-bottom: $base-unit;
 }

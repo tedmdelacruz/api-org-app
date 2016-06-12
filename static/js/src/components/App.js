@@ -3,7 +3,7 @@ import { Notes, Todo } from './index'
 
 export class App extends Component {
     render() {
-        const { app, notes, todos, selectTab, createNote } = this.props
+        const { app, notes, todos, selectTab, notesActions } = this.props
         const { activeTab } = app
 
         const handleTabClick = event => {
@@ -36,7 +36,7 @@ export class App extends Component {
 
                 <div className="row">
                     <div className="col-md-12">
-                        <Notes isActive={ activeTab === 'notes' } createNote={ createNote } data={ notes } />
+                        <Notes isActive={ activeTab === 'notes' } actions={ notesActions } data={ notes } />
                         <Todo isActive={ activeTab === 'todo' } data={ todos }/>
                     </div>
                 </div>
