@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from json import JSONDecoder 
 
-# Create your views here.
+def notes(request):
+    return JsonResponse({})

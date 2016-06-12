@@ -2,33 +2,31 @@ import React, { Component } from 'react'
 import { Notes, Todo } from './index'
 
 export class App extends Component {
-
-    handleTabClick(event) {
-        event.preventDefault()
-        this.props.selectTab(event.target.dataset.value)
-    }
-
-    active(tab) {
-        return (this.props.app.activeTab === tab)
-            ? 'active'
-            : null
-    }
-
     render() {
-        const { activeTab } = this.props.app
+        const { app, notes, todos, selectTab, createNote } = this.props
+        const { activeTab } = app
+
+        const handleTabClick = event => {
+            event.preventDefault()
+            selectTab(event.target.dataset.value)
+        }
+
+        const active = tab => {
+            return (activeTab === tab) ? 'active' : null
+        }
 
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <ul className="nav nav-tabs">
-                            <li className={ this.active('notes') }>
-                                <a href="#" onClick={ this.handleTabClick.bind(this) } data-value="notes">
+                            <li className={ active('notes') }>
+                                <a href="#" onClick={ handleTabClick } data-value="notes">
                                     <i className="fa fa-sticky-note" aria-hidden="true"></i> Notes
                                 </a>
                             </li>
-                            <li className={ this.active('todo') }>
-                                <a href="#" onClick={ this.handleTabClick.bind(this) } data-value="todo">
+                            <li className={ active('todo') }>
+                                <a href="#" onClick={ handleTabClick } data-value="todo">
                                     <i className="fa fa-check-square-o" aria-hidden="true"></i> Todo
                                 </a>
                             </li>
@@ -38,8 +36,8 @@ export class App extends Component {
 
                 <div className="row">
                     <div className="col-md-12">
-                        <Notes isActive={ activeTab === 'notes' } actions={ () => {} }/>
-                        <Todo isActive={ activeTab === 'todo' }/>
+                        <Notes isActive={ activeTab === 'notes' } createNote={ createNote } data={ notes } />
+                        <Todo isActive={ activeTab === 'todo' } data={ todos }/>
                     </div>
                 </div>
             </div>

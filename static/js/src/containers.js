@@ -8,7 +8,8 @@ export const App = connect(
     },
     function mapDispachToProps(dispatch) {
         return {
-            selectTab: (tab) => dispatch(selectTab(tab))
+            selectTab: (tab) => dispatch(selectTab(tab)),
+            createNote: (form) => dispatch(createNote(form))
         }
     }
 )(components.App)
