@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { selectTab, fetchData } from './actions'
+import { selectTab, createNote } from './actions/index'
 import * as components from './components/App'
 
 export const App = connect(
@@ -8,8 +8,7 @@ export const App = connect(
     },
     function mapDispachToProps(dispatch) {
         return {
-            selectTab: (tab) => dispatch(selectTab(tab)),
-            fetchData: () => dispatch(fetchData())
+            selectTab: (tab) => dispatch(selectTab(tab))
         }
     }
 )(components.App)

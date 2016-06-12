@@ -15,6 +15,9 @@ body {
 input:focus {
   outline: none; }
 
+textarea {
+  resize: vertical; }
+
 .btn,
 .nav-tabs > li > a {
   -webkit-border-radius: 0;

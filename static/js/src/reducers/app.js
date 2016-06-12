@@ -1,10 +1,10 @@
-import { SELECT_TAB } from './actions'
+import { SELECT_TAB } from '../actions/index'
 
 const init = {
     activeTab: 'notes'
 }
 
-export function reducer(state = init, action) {
+export default function app(state = init, action) {
     switch(action.type) {
         case SELECT_TAB:
             return Object.assign({}, state, {

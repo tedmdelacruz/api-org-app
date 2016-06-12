@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Notes, Todo } from './'
+import { Notes, Todo } from './index'
 
 export class App extends Component {
 
@@ -9,13 +9,13 @@ export class App extends Component {
     }
 
     active(tab) {
-        return (this.props.activeTab === tab)
+        return (this.props.app.activeTab === tab)
             ? 'active'
             : null
     }
 
     render() {
-        const { activeTab } = this.props
+        const { activeTab } = this.props.app
 
         return (
             <div className="container">
@@ -38,7 +38,7 @@ export class App extends Component {
 
                 <div className="row">
                     <div className="col-md-12">
-                        <Notes isActive={ activeTab === 'notes' }/>
+                        <Notes isActive={ activeTab === 'notes' } actions={ () => {} }/>
                         <Todo isActive={ activeTab === 'todo' }/>
                     </div>
                 </div>
