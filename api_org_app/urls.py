@@ -9,5 +9,5 @@ urlpatterns = [
 
     url(r'^$', pages.views.index),
 
-    url(r'^notes/', api.views.notes),
+    url(r'^api/notes/', api.views.notes),
 ]

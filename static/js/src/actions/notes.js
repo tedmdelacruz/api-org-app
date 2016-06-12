@@ -21,7 +21,7 @@ export function createNote(data) {
 
         const headers = { 'X-CSRFToken': csrftoken }
 
-        return axios.put('/notes/', { data }, { headers })
+        return axios.put('/api/notes/', data, { headers })
             .then(response => {
                 // FIXME
             })
