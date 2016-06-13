@@ -6,7 +6,7 @@ export const App = connect(
     function mapStateToProps(state) {
         return state
     },
-    function mapDispachToProps(dispatch) {
+    function mapDispatchToProps(dispatch) {
         return {
             selectTab: tab => dispatch(actions.selectTab(tab)),
             notesActions: {

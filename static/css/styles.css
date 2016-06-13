@@ -21,7 +21,8 @@ textarea {
 
 .btn,
 .panel,
-.nav-tabs > li > a {
+.nav-tabs > li > a,
+.nav-tabs.nav-justified > li > a {
   -webkit-border-radius: 0;
   border-radius: 0; }
 
@@ -44,6 +45,9 @@ textarea {
 
 .note-form {
   margin-bottom: 40px; }
+
+.notes-controls {
+  margin-bottom: 20px; }
 
 .notes-list-item input,
 .notes-list-item textarea {

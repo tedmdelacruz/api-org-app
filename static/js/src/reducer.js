@@ -10,6 +10,10 @@ export function reducer(state = init, action) {
             return Object.assign({}, state, {
                 activeTab: action.tab
             })
+        case FINISH_CREATE_NOTE:
+            return Object.assign({}, state, {
+                activeTab: action.tab
+            })
         default:
             return state
     }

@@ -6,7 +6,7 @@ export class Note extends Component {
 
         this.setState({
             showDelete: false,
-            isEditMode: false,
+            isEditMode: (id == null),
             id, title, text 
         })
     }
@@ -17,6 +17,20 @@ export class Note extends Component {
 
     componentWillReceiveProps(props) {
         this.getStateFromProps(props)
+    }
+
+    handleMouseLeave() {
+        this.setState({
+            showDelete: false,
+            isEditMode: false
+        })
+
+        const { id, title, text, isEditMode } = this.state
+        if ( ! isEditMode || ! id) {
+            return
+        }
+        const note = { id, title, text }
+        this.props.actions.updateNote(note)
     }
 
     render() {
@@ -41,7 +55,7 @@ export class Note extends Component {
                 (field == 'text' && event.keyCode == 13 && (event.metaKey || event.ctrlKey))) {
 
                 const { id, title, text } = this.state
-                const note = { id, title, text}
+                const note = { id, title, text }
                 actions.updateNote(note)
             }
         }
@@ -51,10 +65,7 @@ export class Note extends Component {
                 return
             }
 
-            this.setState({
-                isEditMode: true,
-                showDelete: false
-            })
+            this.setState({ isEditMode: true })
         }
 
         const handleDelete = event => {
@@ -73,8 +84,7 @@ export class Note extends Component {
 
         const Display = (
             <div>
-                <h4>{ note.title }</h4>
-                <hr/>
+                <h3>{ note.title }</h3>
                 <p>{ note.text }</p>
             </div>
         )
@@ -93,7 +103,7 @@ export class Note extends Component {
             <div className="notes-list-item col-md-12"
                 onClick={ handleEdit }
                 onMouseEnter={ () => { this.setState({ showDelete: true }) } }
-                onMouseLeave={ () => { this.setState({ showDelete: false }) } }>
+                onMouseLeave={ this.handleMouseLeave.bind(this) }>
 
                 <div className="panel panel-default">
                     <div className="panel-body">

@@ -36,7 +36,7 @@ export class App extends Component {
 
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
-                        <Notes isActive={ activeTab === 'notes' } actions={ notesActions } data={ notes } />
+                        <Notes isActive={ activeTab === 'notes' } actions={ notesActions } items={ notes.items } isCreateMode={ notes.isCreateMode }/>
                         <Todo isActive={ activeTab === 'todo' } data={ todos }/>
                     </div>
                 </div>
