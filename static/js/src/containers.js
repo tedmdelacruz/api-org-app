@@ -10,9 +10,9 @@ export const App = connect(
         return {
             selectTab: tab => dispatch(actions.selectTab(tab)),
             notesActions: {
-                createNote: form => dispatch(actions.createNote(form)),
                 getNotes: () => dispatch(actions.getNotes()),
                 noteActions: {
+                    createNote: note => dispatch(actions.createNote(note)),
                     updateNote: note => dispatch(actions.updateNote(note)),
                     deleteNote: note => dispatch(actions.deleteNote(note)),
                 }

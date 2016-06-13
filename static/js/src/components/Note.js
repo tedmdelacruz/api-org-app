@@ -67,7 +67,12 @@ export class Note extends Component {
 
             const { id, title, text } = this.state
             const note = { id, title, text }
-            actions.updateNote(note)
+            
+            if ( ! id) {
+                this.props.actions.createNote(note)
+                return
+            }
+            this.props.actions.updateNote(note)
         }
     }
 
