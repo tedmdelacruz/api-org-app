@@ -18,7 +18,7 @@ export class App extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-md-6 col-md-offset-3">
                         <ul className="nav nav-tabs">
                             <li className={ active('notes') }>
                                 <a href="#" onClick={ handleTabClick } data-value="notes">
@@ -35,7 +35,7 @@ export class App extends Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-md-6 col-md-offset-3">
                         <Notes isActive={ activeTab === 'notes' } actions={ notesActions } data={ notes } />
                         <Todo isActive={ activeTab === 'todo' } data={ todos }/>
                     </div>

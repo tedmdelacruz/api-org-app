@@ -13,7 +13,7 @@ export const App = connect(
                 createNote: form => dispatch(actions.createNote(form)),
                 getNotes: () => dispatch(actions.getNotes()),
                 noteActions: {
-                    editNote: note => dispatch(actions.editNote(note)),
+                    updateNote: note => dispatch(actions.updateNote(note)),
                     deleteNote: note => dispatch(actions.deleteNote(note)),
                 }
             }

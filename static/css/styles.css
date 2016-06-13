@@ -44,3 +44,27 @@ textarea {
 
 .note-form {
   margin-bottom: 40px; }
+
+.notes-list-item input,
+.notes-list-item textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px; }
+
+.notes-list-item .panel {
+  transition: transform 0.2s linear;
+  position: relative; }
+  .notes-list-item .panel .delete-note {
+    background-color: #fff;
+    position: absolute;
+    top: -13px;
+    left: -15px;
+    border: 1px solid lightgray;
+    padding: 2px 7px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px; }
+
+.notes-list-item .panel:hover {
+  transform: scale(1.025);
+  box-shadow: 0 0 10px #dddddd;
+  cursor: pointer; }

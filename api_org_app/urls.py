@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^$', pages.views.index),
 
     url(r'^api/notes/', api.views.notes),
+
+    url(r'^api/note/(?P<note_id>[0-9]+)/', api.views.notes),
 ]
