@@ -8,3 +8,10 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
+
+class Todo(models.Model):
+    entry = models.CharField(max_length=100)
+    is_done = models.BooleanField()
+
+    def __str__(self):
+        return self.entry
