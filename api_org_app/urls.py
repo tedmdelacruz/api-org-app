@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^api/notes/', api.views.notes),
 
     url(r'^api/note/(?P<note_id>[0-9]+)/', api.views.notes),
+
+    url(r'^api/todos/', api.views.todos),
 ]

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ENTER_KEY } from '../constants'
 
 export class Note extends Component {
     getStateFromProps(props) {

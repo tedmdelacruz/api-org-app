@@ -105,3 +105,19 @@ textarea {
         cursor: pointer;
     }
 }
+
+.todo-item {
+    .todo-item-text {
+        font-size: 1.2em;
+    }
+
+    .checkbox input {
+        top: 1px;
+    }
+
+    &.checked {
+        .todo-item-text {
+            text-decoration: line-through;
+        }
+    }
+}

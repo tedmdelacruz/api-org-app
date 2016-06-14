@@ -3,9 +3,9 @@ from django.forms.models import model_to_dict
 from django.core import serializers as s
 import json
 
-from .models import Note 
+from .models import Note, Todo
 
-def get_notes(request):
+def get_notes():
     notes = Note.objects.all().order_by('-pk')
     response = s.serialize('json', notes)
     return HttpResponse(response,
@@ -34,7 +34,7 @@ def delete_note(request, note_id):
 def notes(request, note_id=None):
 
     if (request.method == 'GET'):
-        return get_notes(request)
+        return get_notes()
 
     if (request.method == 'POST'):
         return create_note(request)
@@ -48,6 +48,12 @@ def notes(request, note_id=None):
     return HttpResponseNotFound('Page not found',
         content_type='application/json')
 
+def get_todos():
+    todos = Todo.objects.all().order_by('-pk')
+    response = s.serialize('json', todos)
+    return HttpResponse(response,
+        content_type='application/json')
 
-def todos(request):
-    return HttpResponse('')
+def todos(request, todo_id=None):
+    if (request.method == 'GET'):
+        return get_todos()

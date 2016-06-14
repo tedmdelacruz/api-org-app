@@ -75,3 +75,12 @@ textarea {
 
 .notes-list-item .panel:hover {
   cursor: pointer; }
+
+.todo-item .todo-item-text {
+  font-size: 1.2em; }
+
+.todo-item .checkbox input {
+  top: 1px; }
+
+.todo-item.checked .todo-item-text {
+  text-decoration: line-through; }

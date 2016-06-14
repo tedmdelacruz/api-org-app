@@ -16,6 +16,9 @@ export const App = connect(
                     updateNote: note => dispatch(actions.updateNote(note)),
                     deleteNote: note => dispatch(actions.deleteNote(note)),
                 }
+            },
+            todoActions: {
+                getTodos: () => dispatch(actions.getTodos())
             }
         }
     }
