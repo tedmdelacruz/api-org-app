@@ -102,7 +102,8 @@ export class Note extends Component {
             <div>
                 <input type="text" value={ this.state.title } data-field="title"
                     onChange={ this.handleInputChange.bind(this) }
-                    onKeyDown={ this.handleInputKeydown.bind(this) }/>
+                    onKeyDown={ this.handleInputKeydown.bind(this) }
+                    onFocus={ (event) => { event.target.select() } }/>
 
                 <textarea cols="30" rows="2" value={ this.state.text } data-field="text"
                     onChange={ this.handleInputChange.bind(this) }
