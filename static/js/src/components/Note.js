@@ -118,7 +118,7 @@ export class Note extends Component {
 
                 <div className="panel panel-default">
                     <div className="panel-body">
-                        { this.state.showDelete ? DeleteBtn : null }
+                        { this.state.showDelete && this.state.id ? DeleteBtn : null }
                         { this.state.isEditMode ? Form : Display }  
                     </div>
                 </div>
