@@ -95,9 +95,13 @@ textarea {
         }
     }
 
+    &.note-edit-mode .panel,
     .panel:hover {
         transform: scale(1.025);
         box-shadow: 0 0 10px $grey-light;
+    }
+
+    .panel:hover {
         cursor: pointer;
     }
 }

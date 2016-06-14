@@ -5,7 +5,7 @@ export class Note extends Component {
         const { id, title, text } = props
 
         this.setState({
-            showDelete: false,
+            showDelete: (id == null),
             isEditMode: (id == null),
             id, title, text 
         })
@@ -46,7 +46,10 @@ export class Note extends Component {
             return
         }
 
-        this.setState({ isEditMode: true })
+        this.setState({
+            showDelete: true,
+            isEditMode: true,
+        })
     }
 
     handleDelete(event) {
@@ -54,7 +57,9 @@ export class Note extends Component {
             showDelete: false,
             isEditMode: false
         })
-        this.props.actions.deleteNote(note)
+
+        const { id } = this.state
+        this.props.actions.deleteNote({ id })
     }
 
     handleInputKeydown(event) {
@@ -67,7 +72,7 @@ export class Note extends Component {
 
             const { id, title, text } = this.state
             const note = { id, title, text }
-            
+
             if ( ! id) {
                 this.props.actions.createNote(note)
                 return
@@ -104,7 +109,7 @@ export class Note extends Component {
         )
 
         return (
-            <div className="notes-list-item col-md-12"
+            <div className={ this.state.isEditMode ? "notes-list-item col-md-12 note-edit-mode" : "notes-list-item col-md-12"}
                 onClick={ this.handleEdit.bind(this) }
                 onMouseEnter={ () => { this.setState({ showDelete: true }) } }
                 onMouseLeave={ this.handleMouseLeave.bind(this) }>

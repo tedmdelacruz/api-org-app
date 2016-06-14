@@ -68,7 +68,10 @@ textarea {
     -webkit-border-radius: 15px;
     border-radius: 15px; }
 
+.notes-list-item.note-edit-mode .panel,
 .notes-list-item .panel:hover {
   transform: scale(1.025);
-  box-shadow: 0 0 10px #dddddd;
+  box-shadow: 0 0 10px #dddddd; }
+
+.notes-list-item .panel:hover {
   cursor: pointer; }
