@@ -29,7 +29,9 @@ export class Notes extends Component {
         }
 
         const CreateForm = (
-            <Note id={ null } title="New Note" text="" actions={ actions.noteActions }/>
+            <div onMouseLeave={ () => { this.setState({ isCreateMode: false }) } }>
+                <Note id={ null } title="New Note" text="" actions={ actions.noteActions }/>
+            </div>
         )
 
         return (

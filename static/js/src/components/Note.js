@@ -101,10 +101,12 @@ export class Note extends Component {
         const Form = (
             <div>
                 <input type="text" value={ this.state.title } data-field="title"
-                    onChange={ this.handleInputChange.bind(this) } onKeyDown={ this.handleInputKeydown.bind(this) }/>
+                    onChange={ this.handleInputChange.bind(this) }
+                    onKeyDown={ this.handleInputKeydown.bind(this) }/>
 
                 <textarea cols="30" rows="2" value={ this.state.text } data-field="text"
-                    onChange={ this.handleInputChange.bind(this) } onKeyDown={ this.handleInputKeydown.bind(this) }></textarea>
+                    onChange={ this.handleInputChange.bind(this) }
+                    onKeyDown={ this.handleInputKeydown.bind(this) }></textarea>
             </div>
         )
 
