@@ -5,6 +5,7 @@ export class Note extends Component {
         const { id, title, text } = props
 
         this.setState({
+            isPristine: true,
             showDelete: (id == null),
             isEditMode: (id == null),
             id, title, text 
@@ -19,25 +20,34 @@ export class Note extends Component {
         this.getStateFromProps(props)
     }
 
+    createOrUpdateNote(note) {
+        return note.id
+            ? this.props.actions.updateNote(note)
+            : this.props.actions.createNote(note)
+    }
+
     handleMouseLeave() {
         this.setState({
             showDelete: false,
             isEditMode: false
         })
 
-        const { id, title, text, isEditMode } = this.state
-        if ( ! isEditMode || ! id) {
+        const { id, title, text,
+            isEditMode, isPristine } = this.state
+
+        if ( ! isEditMode || isPristine) {
             return
         }
-        const note = { id, title, text }
-        this.props.actions.updateNote(note)
+
+        this.createOrUpdateNote({ id, title, text })
     }
 
     handleInputChange(event) {
         let { field } = event.target.dataset
 
         this.setState({
-            [field]: event.target.value
+            [field]: event.target.value,
+            isPristine: false
         })
     }
 
@@ -71,13 +81,7 @@ export class Note extends Component {
             (field == 'text' && event.keyCode == 13 && (event.metaKey || event.ctrlKey))) {
 
             const { id, title, text } = this.state
-            const note = { id, title, text }
-
-            if ( ! id) {
-                this.props.actions.createNote(note)
-                return
-            }
-            this.props.actions.updateNote(note)
+            this.createOrUpdateNote({ id, title, text })
         }
     }
 
