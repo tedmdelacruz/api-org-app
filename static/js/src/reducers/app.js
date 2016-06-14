@@ -7,9 +7,7 @@ const init = {
 export default function app(state = init, action) {
     switch(action.type) {
         case SELECT_TAB:
-            return Object.assign({}, state, {
-                activeTab: action.tab
-            })
+            return { ...state, activeTab: action.tab }
         default:
             return state
     }
