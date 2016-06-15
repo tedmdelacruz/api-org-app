@@ -58,15 +58,24 @@ textarea {
 .notes-list-item .panel {
   transition: transform 0.2s linear;
   position: relative; }
-  .notes-list-item .panel .delete-note {
+  .notes-list-item .panel .note-control {
     background-color: #fff;
     position: absolute;
     top: -13px;
-    left: -15px;
     border: 1px solid lightgray;
-    padding: 2px 7px;
-    -webkit-border-radius: 15px;
-    border-radius: 15px; }
+    padding: 2px 7px; }
+  .notes-list-item .panel .delete-note {
+    left: -15px; }
+  .notes-list-item .panel .convert-note {
+    padding: 1.5px 7px;
+    font-size: 1.15em;
+    color: lightgray; }
+    .notes-list-item .panel .convert-note button {
+      background: 0 0;
+      padding: 0;
+      border: 0; }
+    .notes-list-item .panel .convert-note:hover {
+      color: #444; }
 
 .notes-list-item.note-edit-mode .panel,
 .notes-list-item .panel:hover {
@@ -77,7 +86,8 @@ textarea {
   cursor: pointer; }
 
 .todo-item .todo-item-text {
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  margin-right: 10px; }
 
 .todo-item .checkbox input {
   top: 1px; }

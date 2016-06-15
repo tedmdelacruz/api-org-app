@@ -83,15 +83,32 @@ textarea {
         transition: transform 0.2s linear;
         position: relative;
 
-        .delete-note {
+        .note-control {
             background-color: $white;
             position: absolute;
             top: -13px;
-            left: -15px;
             border: 1px solid lightgray;
             padding: 2px 7px; 
-            -webkit-border-radius: 15px;
-                    border-radius: 15px;
+        }
+
+        .delete-note {
+            left: -15px;
+        }
+
+        .convert-note {
+            padding: 1.5px 7px;
+            font-size: 1.15em;
+            color: lightgray;
+
+            button {
+                background: 0 0;
+                padding: 0;
+                border: 0;
+            }
+
+            &:hover {
+                color: $grey;
+            }
         }
     }
 
@@ -109,6 +126,7 @@ textarea {
 .todo-item {
     .todo-item-text {
         font-size: 1.2em;
+        margin-right: 10px;
     }
 
     .checkbox input {

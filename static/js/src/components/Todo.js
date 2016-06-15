@@ -1,51 +1,6 @@
 import React, { Component } from 'react'
 import { ENTER_KEY } from '../constants'
-
-class TodoItem extends Component {
-    constructor() {
-        super()
-        this.state = {
-            id: null,
-            text: '',
-            isChecked: ''
-        }
-    }
-
-    getStateFromProps(props) {
-        const { id, text, isChecked } = props
-        this.setState({ id, text, isChecked }) 
-    }
-
-    componentWillMount() {
-        this.getStateFromProps(this.props)
-    }
-
-    componentWillReceiveProps(newProps) {
-        this.getStateFromProps(newProps)
-    }
-
-    handleCheck(event) {
-        this.props.toggleTodo({
-            id: this.state.id,
-            isChecked: event.target.checked
-        })
-    }
-
-    render() {
-        const { id, text, isChecked } = this.props
-        return (
-            <div className={ isChecked ? 'todo-item checked' : 'todo-item' }>
-                <div className="checkbox">
-                    <label htmlFor={ 'todo-item-' + id }>
-                        <input type="checkbox" id={ 'todo-item-' + id } checked={ this.state.isChecked }
-                            onChange={ this.handleCheck.bind(this) }/>
-                        <strong className="todo-item-text">{ text }</strong>
-                    </label>
-                </div>
-            </div>
-        )
-    }
-}
+import { TodoItem } from './TodoItem'
 
 export class Todo extends Component {
     constructor() {

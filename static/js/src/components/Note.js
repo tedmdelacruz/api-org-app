@@ -7,7 +7,7 @@ export class Note extends Component {
 
         this.setState({
             isPristine: true,
-            showDelete: (id == null),
+            showControls: (id == null),
             isEditMode: (id == null),
             id, title, text 
         })
@@ -29,7 +29,7 @@ export class Note extends Component {
 
     handleMouseLeave() {
         this.setState({
-            showDelete: false,
+            showControls: false,
             isEditMode: false
         })
 
@@ -58,19 +58,23 @@ export class Note extends Component {
         }
 
         this.setState({
-            showDelete: true,
+            showControls: true,
             isEditMode: true,
         })
     }
 
     handleDelete(event) {
         this.setState({
-            showDelete: false,
+            showControls: false,
             isEditMode: false
         })
 
         const { id } = this.state
         this.props.actions.deleteNote({ id })
+    }
+
+    handleConvert(event) {
+
     }
 
     handleInputKeydown(event) {
@@ -90,9 +94,16 @@ export class Note extends Component {
         const { id, title, text } = this.props
         const { actions } = this.props
 
-        const DeleteBtn = (
-            <div className="delete-note" onClick={ this.handleDelete.bind(this) } data-type="delete">
-                <button className="close" type="close" data-type="delete">&times;</button>
+        const Controls = (
+            <div>
+                <div className="delete-note note-control" onClick={ this.handleDelete.bind(this) } data-type="delete">
+                    <button className="close" type="close" data-type="delete">&times;</button>
+                </div>
+                <div className="convert-note note-control text-muted" onClick={ this.handleConvert.bind(this) } data-type="convert">
+                    <button data-type="convert">
+                        <i className="fa fa-arrow-right"></i> <i className="fa fa-check-square-o"></i>
+                    </button>
+                </div>
             </div>
         )
 
@@ -119,12 +130,12 @@ export class Note extends Component {
         return (
             <div className={ this.state.isEditMode ? "notes-list-item col-md-12 note-edit-mode" : "notes-list-item col-md-12"}
                 onClick={ this.handleEdit.bind(this) }
-                onMouseEnter={ () => { this.setState({ showDelete: true }) } }
+                onMouseEnter={ () => { this.setState({ showControls: true }) } }
                 onMouseLeave={ this.handleMouseLeave.bind(this) }>
 
                 <div className="panel panel-default">
                     <div className="panel-body">
-                        { this.state.showDelete && this.state.id ? DeleteBtn : null }
+                        { this.state.showControls && this.state.id ? Controls : null }
                         { this.state.isEditMode ? Form : Display }  
                     </div>
                 </div>
