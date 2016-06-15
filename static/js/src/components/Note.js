@@ -69,8 +69,7 @@ export class Note extends Component {
             isEditMode: false
         })
 
-        const { id } = this.state
-        this.props.actions.deleteNote({ id })
+        this.props.actions.deleteNote(this.state.id)
     }
 
     handleConvert(event) {

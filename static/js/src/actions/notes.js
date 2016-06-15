@@ -51,11 +51,11 @@ export function updateNote(note) {
 }
 
 export const DELETE_NOTE = 'DELETE_NOTE'
-export function deleteNote(note) {
+export function deleteNote(id) {
     return dispatch => {
         const headers = util.setCsrfHeaders()
 
-        return axios.delete('/api/note/' + note.id, { headers })
+        return axios.delete(`/api/note/${id}`, { headers })
             .then(response => {
                 dispatch(getNotes())
             })
