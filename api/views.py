@@ -61,10 +61,21 @@ def create_todo(request):
     return HttpResponse(json.dumps({ 'result': 'success' }),
         content_type='application/json')
 
-def todos(request, todo_id=None):
+def toggle_todo(request, todo_id):
+    data = json.loads(request.body)
+    todo = Todo.objects.get(pk=todo_id)
+    todo.is_done = data['is_done']
+    todo.save()
+    return HttpResponse(json.dumps({ 'result': 'success' }),
+        content_type='application/json')
+
+def todos(request, todo_id=None, action=None):
 
     if (request.method == 'GET'):
         return get_todos()
 
     if (request.method == 'POST'):
         return create_todo(request)
+
+    if (request.method == 'PUT'):
+        return toggle_todo(request, todo_id)

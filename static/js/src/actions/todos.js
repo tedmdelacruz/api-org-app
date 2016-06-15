@@ -30,3 +30,14 @@ export function createTodo(todo) {
             })
     }
 }
+
+export function toggleTodo(todo) {
+    return dispatch => {
+        const headers = util.setCsrfHeaders()
+
+        return axios.put(`/api/todo/${todo.id}/`, { is_done: todo.isChecked }, { headers })
+            .then(response => {
+                dispatch(getTodos())
+            })
+    }
+}

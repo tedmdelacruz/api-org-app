@@ -20,6 +20,7 @@ export const App = connect(
             todoActions: {
                 getTodos: () => dispatch(actions.getTodos()),
                 createTodo: todo => dispatch(actions.createTodo(todo)),
+                toggleTodo: todo => dispatch(actions.toggleTodo(todo))
             }
         }
     }
