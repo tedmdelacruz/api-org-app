@@ -41,6 +41,8 @@ export class TodoItem extends Component {
 
     handleTextKeyDown(event) {
         if (event.keyCode == ENTER_KEY) {
+            const { id, text, isChecked } = this.state
+            this.props.actions.updateTodo({ id, text, isChecked })
         }
     }
 

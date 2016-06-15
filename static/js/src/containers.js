@@ -22,6 +22,7 @@ export const App = connect(
                 createTodo: todo => dispatch(actions.createTodo(todo)),
                 todoItemActions: {
                     toggleTodo: todo => dispatch(actions.toggleTodo(todo)),
+                    updateTodo: todo => dispatch(actions.updateTodo(todo)),
                     deleteTodo: id => dispatch(actions.deleteTodo(id))
                 }
             }

@@ -43,7 +43,7 @@ export const UPDATE_NOTE = 'UPDATE_NOTE'
 export function updateNote(note) {
     return dispatch => {
         const headers = util.setCsrfHeaders()
-        return axios.put('/api/notes/', { ...note }, { headers })
+        return axios.put('/api/notes/', note, { headers })
             .then(response => {
                 dispatch(getNotes())
             })

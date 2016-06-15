@@ -42,6 +42,17 @@ export function toggleTodo(todo) {
     }
 }
 
+export function updateTodo(todo) {
+    return dispatch => {
+        const headers = util.setCsrfHeaders()
+        
+        // return axios.put('/api/todo/', todo, { headers })
+        //     .then(response => {
+        //         dispatch(getTodos())
+        //     })
+    }
+}
+
 export function deleteTodo(id) {
      return dispatch => {
         const headers = util.setCsrfHeaders()
