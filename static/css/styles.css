@@ -13,6 +13,7 @@ body {
   padding-top: 40px;
   font-family: 'CentumaSansLight'; }
 
+button:focus,
 input:focus {
   outline: none; }
 
