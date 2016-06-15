@@ -9,7 +9,7 @@ export class TodoItem extends Component {
             text: '',
             isChecked: '',
             isEditMode: false,
-            showControls: true
+            showControls: false
         }
     }
 
@@ -98,11 +98,13 @@ export class TodoItem extends Component {
         )
 
         return (
-            <div className={ isChecked ? 'todo-item checked text-muted' : 'todo-item' }>
+            <div className={ isChecked ? 'todo-item checked text-muted' : 'todo-item' }
+                onMouseEnter={ () => { this.setState({ showControls: true }) } }
+                onMouseLeave={ () => { this.setState({ showControls: false }) } }>
+
                 <div className="checkbox">
                     <label htmlFor={ 'todo-item-' + id }>
                         { this.state.isEditMode ? Form : Display }
-
                         { this.state.showControls ? Controls : null }
                     </label>
                 </div>
