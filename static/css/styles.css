@@ -55,28 +55,6 @@ textarea {
   padding: 10px;
   margin-bottom: 10px; }
 
-.notes-list-item .panel {
-  transition: transform 0.2s linear;
-  position: relative; }
-  .notes-list-item .panel .note-control {
-    background-color: #fff;
-    position: absolute;
-    top: -13px;
-    border: 1px solid lightgray;
-    padding: 2px 7px; }
-  .notes-list-item .panel .delete-note {
-    left: -15px; }
-  .notes-list-item .panel .convert-note {
-    padding: 1.5px 7px;
-    font-size: 1.15em;
-    color: lightgray; }
-    .notes-list-item .panel .convert-note button {
-      background: 0 0;
-      padding: 0;
-      border: 0; }
-    .notes-list-item .panel .convert-note:hover {
-      color: #444; }
-
 .notes-list-item.note-edit-mode .panel,
 .notes-list-item .panel:hover {
   transform: scale(1.025);
@@ -94,3 +72,18 @@ textarea {
 
 .todo-item.checked .todo-item-text {
   text-decoration: line-through; }
+
+.item-controls button {
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  color: #dddddd; }
+  .item-controls button:hover {
+    color: #444; }
+
+.note-controls {
+  position: absolute;
+  top: 0;
+  left: -1px; }
+
+.todo-item-controls {
+  display: inline; }

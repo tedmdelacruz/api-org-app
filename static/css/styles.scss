@@ -17,6 +17,17 @@ $fg-color: $grey-blue;
 $accent-color: #00b299;
 $secondary-accent-color: #f2784b;
 
+@mixin clearfix() {
+    &:before
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
 body {
     background-color: $bg-color;
     color: $fg-color;
@@ -79,39 +90,6 @@ textarea {
         margin-bottom: $base-unit /4;
     }
 
-    .panel {
-        transition: transform 0.2s linear;
-        position: relative;
-
-        .note-control {
-            background-color: $white;
-            position: absolute;
-            top: -13px;
-            border: 1px solid lightgray;
-            padding: 2px 7px; 
-        }
-
-        .delete-note {
-            left: -15px;
-        }
-
-        .convert-note {
-            padding: 1.5px 7px;
-            font-size: 1.15em;
-            color: lightgray;
-
-            button {
-                background: 0 0;
-                padding: 0;
-                border: 0;
-            }
-
-            &:hover {
-                color: $grey;
-            }
-        }
-    }
-
     &.note-edit-mode .panel,
     .panel:hover {
         transform: scale(1.025);
@@ -139,3 +117,26 @@ textarea {
         }
     }
 }
+
+.item-controls {
+    button {
+        background-color: $white;
+        border: 1px solid $grey-light;
+        color: $grey-light;
+
+        &:hover {
+            color: $grey;
+        }
+    }
+}
+
+.note-controls {
+    position: absolute;
+    top: 0;
+    left: -1px;
+}
+
+.todo-item-controls {
+    display: inline;
+}
+

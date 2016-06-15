@@ -7,7 +7,7 @@ export class TodoItem extends Component {
             id: null,
             text: '',
             isChecked: '',
-            showControls: false
+            showControls: true
         }
     }
 
@@ -35,13 +35,17 @@ export class TodoItem extends Component {
         const { id, text, isChecked } = this.props
 
         const Controls = (
-            <span className="btn-group">
-                <a href="#" onClick={ () => {} } className="btn btn-info btn-sm">
+            <div className="item-controls todo-item-controls">
+                <button className="item-control">
                     <i className="fa fa-arrow-left"></i> <i className="fa fa-sticky-note"></i>
-                </a>
-                <a href="#" onClick={ () => {} } className="btn btn-default btn-sm"><i className="fa fa-pencil"></i></a> 
-                <a href="#" onClick={ () => {} } className="btn btn-danger btn-sm">&times;</a>
-            </span>
+                </button>
+                <button className="item-control">
+                    <i className="fa fa-pencil"></i>
+                </button>
+                <button className="item-control">
+                    <i className="fa fa-times"></i>
+                </button>
+            </div>
         )
 
         return (
@@ -51,7 +55,7 @@ export class TodoItem extends Component {
                         <input type="checkbox" id={ 'todo-item-' + id } checked={ this.state.isChecked }
                             onChange={ this.handleCheck.bind(this) }/>
                         <strong className="todo-item-text">{ text }</strong> 
-                        { this.showControls ? Controls : null }
+                        { this.state.showControls ? Controls : null }
                     </label>
                 </div>
             </div>

@@ -58,7 +58,7 @@ export class Note extends Component {
         }
 
         this.setState({
-            showControls: true,
+            showControls: false,
             isEditMode: true,
         })
     }
@@ -95,15 +95,13 @@ export class Note extends Component {
         const { actions } = this.props
 
         const Controls = (
-            <div>
-                <div className="delete-note note-control" onClick={ this.handleDelete.bind(this) } data-type="delete">
-                    <button className="close" type="close" data-type="delete">&times;</button>
-                </div>
-                <div className="convert-note note-control text-muted" onClick={ this.handleConvert.bind(this) } data-type="convert">
-                    <button data-type="convert">
-                        <i className="fa fa-arrow-right"></i> <i className="fa fa-check-square-o"></i>
-                    </button>
-                </div>
+            <div className="item-controls note-controls">
+                <button className="item-control" onClick={ this.handleDelete.bind(this) } data-type="delete">
+                    <i className="fa fa-times"></i>
+                </button>
+                <button className="item-control" onClick={ this.handleConvert.bind(this) } data-type="convert">
+                    <i className="fa fa-check-square-o"></i> <i className="fa fa-arrow-right"></i>
+                </button>
             </div>
         )
 
