@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ENTER_KEY } from '../constants'
 
 export class TodoItem extends Component {
     constructor() {
@@ -7,6 +8,7 @@ export class TodoItem extends Component {
             id: null,
             text: '',
             isChecked: '',
+            isEditMode: false,
             showControls: true
         }
     }
@@ -31,6 +33,24 @@ export class TodoItem extends Component {
         })
     }
 
+    handleTextChange(event) {
+        this.setState({
+            text: event.target.value
+        })
+    }
+
+    handleTextKeyDown(event) {
+        if (event.keyCode == ENTER_KEY) {
+        }
+    }
+
+    handleEditToggle() {
+        this.setState({
+            isEditMode: ! this.state.isEditMode,
+            showControls: ! this.state.showControls
+        })
+    }
+
     handleDelete() {
         this.props.actions.deleteTodo(this.state.id)
     }
@@ -38,12 +58,35 @@ export class TodoItem extends Component {
     render() {
         const { id, text, isChecked } = this.props
 
+        const Form = (
+            <span>
+                <input type="text" value={ this.state.text }
+                    onChange={ this.handleTextChange.bind(this) }
+                    onKeyDown={ this.handleTextKeyDown.bind(this) }
+                    onClick={ event => { event.target.select() } }/>
+
+                <div className="item-controls todo-item-controls">
+                    <button className="item-control" onClick={ this.handleEditToggle.bind(this) }>
+                        <i className="fa fa-times"></i>
+                    </button>
+                </div>
+            </span>
+        )
+
+        const Display = (
+            <span>
+                <input type="checkbox" id={ 'todo-item-' + id } checked={ this.state.isChecked }
+                    onChange={ this.handleToggle.bind(this) }/>
+                <strong className="todo-item-text">{ text }</strong>
+            </span>
+        )
+
         const Controls = (
             <div className="item-controls todo-item-controls">
                 <button className="item-control">
                     <i className="fa fa-arrow-left"></i> <i className="fa fa-sticky-note"></i>
                 </button>
-                <button className="item-control">
+                <button className="item-control" onClick={ this.handleEditToggle.bind(this) }>
                     <i className="fa fa-pencil"></i>
                 </button>
                 <button className="item-control" onClick={ this.handleDelete.bind(this) }>
@@ -56,9 +99,8 @@ export class TodoItem extends Component {
             <div className={ isChecked ? 'todo-item checked text-muted' : 'todo-item' }>
                 <div className="checkbox">
                     <label htmlFor={ 'todo-item-' + id }>
-                        <input type="checkbox" id={ 'todo-item-' + id } checked={ this.state.isChecked }
-                            onChange={ this.handleToggle.bind(this) }/>
-                        <strong className="todo-item-text">{ text }</strong> 
+                        { this.state.isEditMode ? Form : Display }
+
                         { this.state.showControls ? Controls : null }
                     </label>
                 </div>

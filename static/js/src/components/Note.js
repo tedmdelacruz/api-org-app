@@ -81,8 +81,8 @@ export class Note extends Component {
 
         // In title field, update note on ENTER
         // In text field, update note on CTRL/CMD + ENTER
-        if ((field == 'title' && event.keyCode == 13) ||
-            (field == 'text' && event.keyCode == 13 && (event.metaKey || event.ctrlKey))) {
+        if ((field == 'title' && event.keyCode == ENTER_KEY) ||
+            (field == 'text' && event.keyCode == ENTER_KEY && (event.metaKey || event.ctrlKey))) {
 
             const { id, title, text } = this.state
             this.createOrUpdateNote({ id, title, text })

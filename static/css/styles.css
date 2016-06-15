@@ -76,7 +76,8 @@ textarea {
 .item-controls button {
   background-color: #fff;
   border: 1px solid #dddddd;
-  color: #dddddd; }
+  color: #dddddd;
+  padding: 2px 5px; }
   .item-controls button:hover {
     color: #444; }
 
