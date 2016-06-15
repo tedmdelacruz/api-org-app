@@ -56,8 +56,8 @@ export class Todo extends Component {
 
                 <div className="todo-list">
                     { items.map((item, index) => {
-                        return <TodoItem key={ index } id={ item.pk } text={ item.fields.entry }
-                            isChecked={ item.fields.is_done }/>
+                        return <TodoItem key={ index } id={ item.id } text={ item.text }
+                            isChecked={ item.isChecked }/>
                     }) }
                 </div>
             </div>

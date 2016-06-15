@@ -48,7 +48,7 @@ export class Notes extends Component {
                         : null }
 
                     { items.map((item, index) => {
-                        return <Note id={ item.pk } title={ item.fields.title } text={ item.fields.text }
+                        return <Note id={ item.id } title={ item.title } text={ item.text }
                             key={ index } actions={ actions.noteActions }/>
                     }) }
                 </div>
