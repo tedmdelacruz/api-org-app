@@ -54,6 +54,17 @@ def get_todos():
     return HttpResponse(response,
         content_type='application/json')
 
+def create_todo(request):
+    data = json.loads(request.body)
+    todo = Todo(entry=data['entry'])
+    todo.save()
+    return HttpResponse(json.dumps({ 'result': 'success' }),
+        content_type='application/json')
+
 def todos(request, todo_id=None):
+
     if (request.method == 'GET'):
         return get_todos()
+
+    if (request.method == 'POST'):
+        return create_todo(request)

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import util from '../util'
 
 export const FINISH_GET_TODOS = 'FINISH_GET_TODOS'
 function finishGetTodos(todos) {
@@ -11,9 +12,21 @@ function finishGetTodos(todos) {
 export const GET_TODOS = 'GET_TODOS'
 export function getTodos() {
     return dispatch => {
-        return axios.get('/api/todos')
+        return axios.get('/api/todos/')
             .then(response => {
                 dispatch(finishGetTodos(response.data))
+            })
+    }
+}
+
+export const CREATE_TODO = 'CREATE_TODO'
+export function createTodo(todo) {
+    return dispatch => {
+        const headers = util.setCsrfHeaders()
+
+        return axios.post('/api/todos/', { entry: todo }, { headers })
+            .then(response => {
+                dispatch(getTodos())
             })
     }
 }

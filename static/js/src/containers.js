@@ -18,7 +18,8 @@ export const App = connect(
                 }
             },
             todoActions: {
-                getTodos: () => dispatch(actions.getTodos())
+                getTodos: () => dispatch(actions.getTodos()),
+                createTodo: todo => dispatch(actions.createTodo(todo)),
             }
         }
     }

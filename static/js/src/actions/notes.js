@@ -1,15 +1,5 @@
 import axios from 'axios'
-import cookie from 'cookie'
-
-function setCsrfHeaders() {
-    const { csrftoken } = cookie.parse(document.cookie)
-
-    if ( ! csrftoken) {
-        throw "CSRF Token is required"
-    }
-
-    return { 'X-CSRFToken': csrftoken }
-}
+import util from '../util'
 
 export const FINISH_CREATE_NOTE = 'FINISH_CREATE_NOTE'
 function finishCreateNote() {
@@ -21,7 +11,7 @@ function finishCreateNote() {
 export const CREATE_NOTE = 'CREATE_NOTE'
 export function createNote(data) {
     return dispatch => {
-        const headers = setCsrfHeaders()
+        const headers = util.setCsrfHeaders()
 
         return axios.post('/api/notes/', data, { headers })
             .then(response => {
@@ -52,7 +42,7 @@ export function getNotes() {
 export const UPDATE_NOTE = 'UPDATE_NOTE'
 export function updateNote(note) {
     return dispatch => {
-        const headers = setCsrfHeaders()
+        const headers = util.setCsrfHeaders()
         return axios.put('/api/notes/', { ...note }, { headers })
             .then(response => {
                 dispatch(getNotes())
@@ -63,7 +53,7 @@ export function updateNote(note) {
 export const DELETE_NOTE = 'DELETE_NOTE'
 export function deleteNote(note) {
     return dispatch => {
-        const headers = setCsrfHeaders()
+        const headers = util.setCsrfHeaders()
 
         return axios.delete('/api/note/' + note.id, { headers })
             .then(response => {
