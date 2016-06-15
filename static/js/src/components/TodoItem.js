@@ -24,11 +24,15 @@ export class TodoItem extends Component {
         this.getStateFromProps(newProps)
     }
 
-    handleCheck(event) {
-        this.props.toggleTodo({
+    handleToggle(event) {
+        this.props.actions.toggleTodo({
             id: this.state.id,
             isChecked: event.target.checked
         })
+    }
+
+    handleDelete() {
+        this.props.actions.deleteTodo(this.state.id)
     }
 
     render() {
@@ -42,7 +46,7 @@ export class TodoItem extends Component {
                 <button className="item-control">
                     <i className="fa fa-pencil"></i>
                 </button>
-                <button className="item-control">
+                <button className="item-control" onClick={ this.handleDelete.bind(this) }>
                     <i className="fa fa-times"></i>
                 </button>
             </div>
@@ -53,7 +57,7 @@ export class TodoItem extends Component {
                 <div className="checkbox">
                     <label htmlFor={ 'todo-item-' + id }>
                         <input type="checkbox" id={ 'todo-item-' + id } checked={ this.state.isChecked }
-                            onChange={ this.handleCheck.bind(this) }/>
+                            onChange={ this.handleToggle.bind(this) }/>
                         <strong className="todo-item-text">{ text }</strong> 
                         { this.state.showControls ? Controls : null }
                     </label>

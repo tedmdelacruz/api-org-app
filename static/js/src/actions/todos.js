@@ -41,3 +41,14 @@ export function toggleTodo(todo) {
             })
     }
 }
+
+export function deleteTodo(id) {
+     return dispatch => {
+        const headers = util.setCsrfHeaders()
+
+        return axios.delete(`/api/todo/${id}/`, { headers })
+            .then(response => {
+                dispatch(getTodos())
+            })
+     }   
+}
