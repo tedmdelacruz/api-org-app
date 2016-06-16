@@ -1,7 +1,7 @@
 import { SELECT_TAB } from '../actions/index'
 
 const init = {
-    activeTab: 'todo'
+    activeTab: 'notes'
 }
 
 export default function app(state = init, action) {
