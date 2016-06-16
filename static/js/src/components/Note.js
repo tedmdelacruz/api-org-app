@@ -21,10 +21,11 @@ export class Note extends Component {
         this.getStateFromProps(props)
     }
 
-    createOrUpdateNote(note) {
-        return note.id
-            ? this.props.actions.updateNote(note)
-            : this.props.actions.createNote(note)
+    createOrUpdateNote() {
+        const { id, title, text } = this.state
+        return id
+            ? this.props.actions.updateNote({ id, title, text})
+            : this.props.actions.createNote({ title, text })
     }
 
     handleMouseLeave() {
@@ -33,14 +34,13 @@ export class Note extends Component {
             isEditMode: false
         })
 
-        const { id, title, text,
-            isEditMode, isPristine } = this.state
+        const { isEditMode, isPristine } = this.state
 
         if ( ! isEditMode || isPristine) {
             return
         }
 
-        this.createOrUpdateNote({ id, title, text })
+        this.createOrUpdateNote()
     }
 
     handleInputChange(event) {
@@ -79,13 +79,12 @@ export class Note extends Component {
     handleInputKeydown(event) {
         let { field } = event.target.dataset
 
-        // In title field, update note on ENTER
-        // In text field, update note on CTRL/CMD + ENTER
+        // In title field, save note on ENTER
+        // In text field, save note on CTRL/CMD + ENTER
         if ((field == 'title' && event.keyCode == ENTER_KEY) ||
             (field == 'text' && event.keyCode == ENTER_KEY && (event.metaKey || event.ctrlKey))) {
 
-            const { id, title, text } = this.state
-            this.createOrUpdateNote({ id, title, text })
+            this.createOrUpdateNote()
         }
     }
 
