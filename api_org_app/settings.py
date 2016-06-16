@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
-    'api.apps.ApiConfig',
-    'rest_framework',
+    'notes_api.apps.NotesApiConfig',
+    'todos_api.apps.TodosApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
