@@ -9,23 +9,20 @@ from todos_api.models import Todo
 
 def get_notes():
     notes = Note.objects.all().order_by('-pk')
-    response = s.serialize('json', notes)
-    return HttpResponse(response,
-        content_type='application/json')
+    items = s.serialize('json', notes)
+    return HttpResponse(items, content_type='application/json')
 
 def create_note(request):
     data = json.loads(request.body)
     note = Note(title=data['title'], text=data['text'])
     note.save()
-    return HttpResponse(json.dumps({ 'result': 'success' }),
-        content_type='application/json')
+    return HttpResponse()
 
 def update_note(request):
     data = json.loads(request.body)
     note = Note(pk=data['id'], title=data['title'], text=data['text'])
     note.save()
-    return HttpResponse(json.dumps({ 'result': 'success' }),
-        content_type='application/json')
+    return HttpResponse()
 
 @transaction.atomic
 def convert_note(request, note_id):
@@ -35,14 +32,12 @@ def convert_note(request, note_id):
     todo = Todo(entry=entry)
     todo.save()
     note.delete()
-    return HttpResponse(json.dumps({ 'result': 'success', 'entry': entry }),
-        content_type='application/json')
+    return HttpResponse()
 
 def delete_note(request, note_id):
     note = Note.objects.get(pk=note_id)
     note.delete()
-    return HttpResponse(json.dumps({ 'result': 'success' }),
-        content_type='application/json')
+    return HttpResponse()
 
 def index(request, note_id=None, action=None):
     if (request.method == 'GET'):
@@ -54,8 +49,8 @@ def index(request, note_id=None, action=None):
     if (request.method == 'PUT'):
         if (action == 'convert'):
             return convert_note(request, note_id)
-        else:
-            return update_note(request)
+            
+        return update_note(request)
 
     if (request.method == 'DELETE'):
         return delete_note(request, note_id)
