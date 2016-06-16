@@ -1,5 +1,6 @@
 import axios from 'axios'
 import util from '../util'
+import { getNotes } from './notes'
 
 export const FINISH_GET_TODOS = 'FINISH_GET_TODOS'
 function finishGetTodos(todos) {
@@ -63,4 +64,16 @@ export function deleteTodo(id) {
                 dispatch(getTodos())
             })
      }   
+}
+
+export const CONVERT_TODO = 'CONVERT_TODO'
+export function convertTodo(id) {
+    return dispatch => {
+        const headers = util.setCsrfHeaders()
+        return axios.put(`/api/todo/${id}/convert/`, {}, { headers })
+            .then(response => {
+                dispatch(getTodos())
+                dispatch(getNotes())
+            })
+    }
 }

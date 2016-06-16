@@ -47,6 +47,10 @@ export class TodoItem extends Component {
         }
     }
 
+    handleConvert() {
+        this.props.actions.convertTodo(this.state.id)
+    }
+
     handleEditToggle() {
         this.setState({
             isEditMode: ! this.state.isEditMode,
@@ -86,7 +90,7 @@ export class TodoItem extends Component {
 
         const Controls = (
             <div className="item-controls todo-item-controls">
-                <button className="item-control">
+                <button className="item-control" onClick={ this.handleConvert.bind(this) }>
                     <i className="fa fa-sticky-note"></i> <i className="fa fa-arrow-left"></i>
                 </button>
                 <button className="item-control" onClick={ this.handleEditToggle.bind(this) }>

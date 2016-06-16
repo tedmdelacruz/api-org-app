@@ -24,7 +24,8 @@ export const App = connect(
                 todoItemActions: {
                     toggleTodo: todo => dispatch(actions.toggleTodo(todo)),
                     updateTodo: todo => dispatch(actions.updateTodo(todo)),
-                    deleteTodo: id => dispatch(actions.deleteTodo(id))
+                    deleteTodo: id => dispatch(actions.deleteTodo(id)),
+                    convertTodo: id => dispatch(actions.convertTodo(id))
                 }
             }
         }

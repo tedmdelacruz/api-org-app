@@ -1,9 +1,11 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.forms.models import model_to_dict
 from django.core import serializers as s
+from django.db import transaction
 import json
 
 from .models import Todo
+from notes_api.models import Note
 
 
 def get_todos():
@@ -24,6 +26,15 @@ def toggle_todo(request, todo_id):
     todo = Todo.objects.get(pk=todo_id)
     todo.is_done = data['is_done']
     todo.save()
+    return HttpResponse(json.dumps({ 'result': 'success' }),
+        content_type='application/json')
+
+@transaction.atomic
+def convert_todo(request, todo_id):
+    todo = Todo.objects.get(pk=todo_id)
+    note = Note(title=todo.entry)
+    note.save()
+    todo.delete()
     return HttpResponse(json.dumps({ 'result': 'success' }),
         content_type='application/json')
 
@@ -51,6 +62,8 @@ def index(request, todo_id=None, action=None):
     if (request.method == 'PUT'):
         if (action == 'toggle'):
             return toggle_todo(request, todo_id)
+        if (action == 'convert'):
+            return convert_todo(request, todo_id)
         else:
             return update_todo(request, todo_id)
 
