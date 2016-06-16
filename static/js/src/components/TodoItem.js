@@ -87,7 +87,7 @@ export class TodoItem extends Component {
         const Controls = (
             <div className="item-controls todo-item-controls">
                 <button className="item-control">
-                    <i className="fa fa-arrow-left"></i> <i className="fa fa-sticky-note"></i>
+                    <i className="fa fa-sticky-note"></i> <i className="fa fa-arrow-left"></i>
                 </button>
                 <button className="item-control" onClick={ this.handleEditToggle.bind(this) }>
                     <i className="fa fa-pencil"></i>

@@ -99,7 +99,7 @@ export class Note extends Component {
                     <i className="fa fa-times"></i>
                 </button>
                 <button className="item-control" onClick={ this.handleConvert.bind(this) } data-type="convert">
-                    <i className="fa fa-check-square-o"></i> <i className="fa fa-arrow-right"></i>
+                    <i className="fa fa-arrow-right"></i> <i className="fa fa-check-square-o"></i>
                 </button>
             </div>
         )
