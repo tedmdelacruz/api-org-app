@@ -104,7 +104,7 @@ export class TodoItem extends Component {
 
         return (
             <div className={ isChecked ? 'todo-item checked text-muted' : 'todo-item' }
-                onMouseEnter={ () => { this.setState({ showControls: true }) } }
+                onMouseEnter={ () => { ! this.state.isEditMode ? this.setState({ showControls: true }) : null  } }
                 onMouseLeave={ () => { this.setState({ showControls: false }) } }>
 
                 <div className="checkbox">
