@@ -63,7 +63,7 @@ export class Note extends Component {
         })
     }
 
-    handleDelete(event) {
+    handleDelete() {
         this.setState({
             showControls: false,
             isEditMode: false
@@ -72,8 +72,8 @@ export class Note extends Component {
         this.props.actions.deleteNote(this.state.id)
     }
 
-    handleConvert(event) {
-
+    handleConvert() {
+        this.props.actions.convertNote(this.state.id)
     }
 
     handleInputKeydown(event) {

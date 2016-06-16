@@ -12,7 +12,7 @@ urlpatterns = [
 
     url(r'^api/notes/', notes_api.views.index),
 
-    url(r'^api/note/(?P<note_id>[0-9]+)/', notes_api.views.index),
+    url(r'^api/note/(?P<note_id>[0-9]+)/(?P<action>[\w-]*)', notes_api.views.index),
 
     url(r'^api/todos/', todos_api.views.index),
 
