@@ -30,7 +30,7 @@ gulp.task('scss:watch', function () {
 });
 
 function compile(isWatch) {
-    var bundler = watchify(browserify(paths.redux, { debug: true }))
+    var bundler = browserify(paths.redux, { debug: true })
         .transform(babelify);
 
     function rebundle() {
@@ -46,6 +46,7 @@ function compile(isWatch) {
     }
 
     if (isWatch) {
+        bundler = watchify(bundler)
         bundler.on('update', function () {
             return rebundle();
         });
