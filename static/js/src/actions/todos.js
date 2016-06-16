@@ -33,7 +33,7 @@ export function createTodo(todo) {
 export function toggleTodo(todo) {
     return dispatch => {
         const headers = util.setCsrfHeaders()
-        return axios.put(`/api/todo/${todo.id}/`, { is_done: todo.isChecked }, { headers })
+        return axios.put(`/api/todo/${todo.id}/toggle`, { is_done: todo.isChecked }, { headers })
             .then(response => {
                 dispatch(getTodos())
             })
@@ -43,10 +43,15 @@ export function toggleTodo(todo) {
 export function updateTodo(todo) {
     return dispatch => {
         const headers = util.setCsrfHeaders()
-        // return axios.put('/api/todo/', todo, { headers })
-        //     .then(response => {
-        //         dispatch(getTodos())
-        //     })
+        const id = todo.id
+        todo = {
+            entry: todo.text,
+            is_done: todo.isChecked
+        }
+        return axios.put(`/api/todo/${id}/`, todo, { headers })
+            .then(response => {
+                dispatch(getTodos())
+            })
     }
 }
 

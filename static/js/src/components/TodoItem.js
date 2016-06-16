@@ -43,6 +43,7 @@ export class TodoItem extends Component {
         if (event.keyCode == ENTER_KEY) {
             const { id, text, isChecked } = this.state
             this.props.actions.updateTodo({ id, text, isChecked })
+            this.setState({ isEditMode: false })
         }
     }
 
@@ -67,7 +68,7 @@ export class TodoItem extends Component {
                     onKeyDown={ this.handleTextKeyDown.bind(this) }
                     onClick={ event => { event.target.select() } }/>
 
-                <div className="item-controls todo-item-controls">
+                <div className="item-controls todo-item-controls" data-type="edit-close">
                     <button className="item-control" onClick={ this.handleEditToggle.bind(this) }>
                         <i className="fa fa-times"></i>
                     </button>
@@ -76,11 +77,11 @@ export class TodoItem extends Component {
         )
 
         const Display = (
-            <span>
+            <label htmlFor={ 'todo-item-' + id }>
                 <input type="checkbox" id={ 'todo-item-' + id } checked={ this.state.isChecked }
-                    onChange={ this.handleToggle.bind(this) }/>
-                <strong className="todo-item-text">{ text }</strong>
-            </span>
+                    onChange={ this.handleToggle.bind(this) } data-type="toggle"/>
+                <strong className="todo-item-text" data-type="toggle">{ text }</strong>
+            </label>
         )
 
         const Controls = (
@@ -103,10 +104,8 @@ export class TodoItem extends Component {
                 onMouseLeave={ () => { this.setState({ showControls: false }) } }>
 
                 <div className="checkbox">
-                    <label htmlFor={ 'todo-item-' + id }>
-                        { this.state.isEditMode ? Form : Display }
-                        { this.state.showControls ? Controls : null }
-                    </label>
+                    { this.state.isEditMode ? Form : Display }
+                    { this.state.showControls ? Controls : null }
                 </div>
             </div>
         )

@@ -69,6 +69,13 @@ def toggle_todo(request, todo_id):
     return HttpResponse(json.dumps({ 'result': 'success' }),
         content_type='application/json')
 
+def update_todo(request, todo_id):
+    data = json.loads(request.body)
+    todo = Todo(pk=todo_id, entry=data['entry'], is_done=data['is_done'])
+    todo.save()
+    return HttpResponse(json.dumps({ 'result': 'success' }),
+        content_type='application/json')
+
 def delete_todo(request, todo_id):
     todo = Todo.objects.get(pk=todo_id)
     todo.delete()
@@ -84,7 +91,10 @@ def todos(request, todo_id=None, action=None):
         return create_todo(request)
 
     if (request.method == 'PUT'):
-        return toggle_todo(request, todo_id)
+        if (action == 'toggle'):
+            return toggle_todo(request, todo_id)
+        else:
+            return update_todo(request, todo_id)
 
     if (request.method == 'DELETE'):
         return delete_todo(request, todo_id)

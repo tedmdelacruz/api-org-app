@@ -70,7 +70,7 @@ textarea {
   line-height: 1.7em; }
 
 .todo-item .checkbox input {
-  top: 1px; }
+  top: 5px; }
 
 .todo-item.checked .todo-item-text {
   text-decoration: line-through; }
