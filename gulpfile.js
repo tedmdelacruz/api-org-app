@@ -9,6 +9,8 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var babelify = require('babelify');
 var notify = require('gulp-notify');
+var gulpif = require('gulp-if');
+var uglify = require('gulp-uglify');
 
 var paths = {
     scss: 'static/css/styles.scss',
@@ -29,7 +31,7 @@ gulp.task('scss:watch', function () {
     return gulp.watch(paths.scss, ['scss']);
 });
 
-function compile(isWatch) {
+function compile(isWatch, isProd) {
     var bundler = browserify(paths.redux, { debug: true })
         .transform(babelify);
 
@@ -41,6 +43,7 @@ function compile(isWatch) {
             })
             .pipe(source('app.js'))
             .pipe(buffer())
+            .pipe(gulpif(isProd, uglify().on('error', console.log)))
             .pipe(gulp.dest(paths.dest + '/js/dist'))
             .pipe(notify('Successfully compiled JS'))
     }
@@ -61,6 +64,10 @@ gulp.task('js', function () {
 
 gulp.task('js:watch', function () {
     return compile(true);
+});
+
+gulp.task('js:build', function () {
+    return compile(false, true);
 });
 
 // TODO Refactor me
